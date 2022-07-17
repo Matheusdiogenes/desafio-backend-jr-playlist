@@ -16,14 +16,14 @@ export class LoginCotroller {
 
 
     if (!user) {
-      return res.status(200).send({
+      return res.status(400).send({
         message: 'email or password invalid.'
       })
     }
 
     if (email === process.env.EMAIL_ADMIN) {
       if (password !== process.env.PASSWORD_ADMIN)
-        return res.status(200).send({
+        return res.status(400).send({
           message: 'email or password invalid.'
         })
       const token = await generateToken({ id: user.id, role: user.role })
@@ -32,7 +32,7 @@ export class LoginCotroller {
 
     const passwordCompare = await compare(password.toString(), user.password)
     if (!passwordCompare) {
-      return res.status(200).send({
+      return res.status(400).send({
         message: 'email or password invalid.'
       })
     }

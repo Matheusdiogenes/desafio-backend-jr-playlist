@@ -1,0 +1,414 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Desafio Backend JR",
+    "contact": {
+      "email": "matheusdiogenes98@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/login": {
+      "post": {
+        "sumary": "Criar usúario",
+        "description": "Essa rota é responsável por cadastrar usúarios",
+        "tags": [
+          "Login"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Email ou Password inválidos."
+          }
+        }
+      }
+    },
+    "/user": {
+      "post": {
+        "sumary": "Criar usúario",
+        "description": "Essa rota é responsável por cadastrar usúarios",
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Não Autorizado"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      },
+      "get": {
+        "sumary": "Obter todos os usúarios",
+        "description": "Essa rota é responsável por retornar usúarios",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Não Autorizado"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      }
+    },
+    "/user/{idUser}": {
+      "delete": {
+        "sumary": "Deletar um usúario",
+        "description": "Essa rota é responsável por deletar usúarios",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idUser",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID do usúario",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Não Autorizado"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      },
+      "put": {
+        "sumary": "Atualizar um usúario pelo ID",
+        "description": "Essa rota é responsável por atualizar usúarios",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idUser",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID do usúario",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Não Autorizado"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      }
+    },
+    "/playlist": {
+      "post": {
+        "sumary": "Criar uma playlist",
+        "description": "Essa rota é responsável por criar uma playlist",
+        "tags": [
+          "Playlist"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Playlist"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Não Autorizado"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      },
+      "get": {
+        "sumary": "Obter todos os usúarios",
+        "description": "Essa rota é responsável por retornar usúarios",
+        "tags": [
+          "Playlist"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Não Autorizado"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      }
+    },
+    "/playlist/{idPlaylist}": {
+      "delete": {
+        "sumary": "Deletar uma playlist",
+        "description": "Essa rota é responsável por deletar uma playlist",
+        "tags": [
+          "Playlist"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "idPlaylist",
+            "in": "path",
+            "description": "ID da playlist",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Não Autorizado"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      },
+      "put": {
+        "sumary": "Atualizar uma playlist pelo ID",
+        "description": "Essa rota é responsável por atualizar uma playlist",
+        "tags": [
+          "Playlist"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "idPlaylist",
+            "in": "path",
+            "description": "ID da playlist",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Playlist"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Não Autorizado"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Playlist": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "genre": {
+            "type": "string"
+          },
+          "musics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

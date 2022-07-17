@@ -25,6 +25,7 @@ export class UserService implements IUserRepo {
   }
 
   async updateUser(idUser: number, user: User): Promise<boolean> {
+    if(user.password) user.password = await hash(user.password.toString(), 10)
     await this.prisma.user.update({
       where: {
         id: idUser

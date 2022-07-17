@@ -17,13 +17,13 @@ const playlistController = new PlaylistController(playlistService)
 const loginController = new LoginCotroller(userService)
 
 router.post('/login', loginController.login)
-router.post('/register', userController.create)
+router.post('/user', userController.create)
 
 router.get('/user', authMiddleware.ADMIN, userController.findAll)
 router.put('/user/:id', authMiddleware.ADMIN, userController.update)
 router.delete('/user/:id', authMiddleware.ADMIN, userController.delete)
 
 router.post('/playlist', authMiddleware.USER, playlistController.create)
-router.get('/playlist/:idUser', authMiddleware.USER, playlistController.findAll)
-router.delete('/playlist/:idUser/:idPlaylist', authMiddleware.USER, playlistController.delete)
-router.put('/playlist/:idUser/:idPlaylist', authMiddleware.USER, playlistController.update)
+router.get('/playlist', authMiddleware.USER, playlistController.findAll)
+router.delete('/playlist/:idPlaylist', authMiddleware.USER, playlistController.delete)
+router.put('/playlist/:idPlaylist', authMiddleware.USER, playlistController.update)
