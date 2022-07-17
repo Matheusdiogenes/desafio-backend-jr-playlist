@@ -24,7 +24,7 @@ export class PlaylistController {
     const decoded: any = jwt.decode(token)
     const idUser = decoded!.userID
     const playlist = await this.playlistRepo.findAllPlaylist(idUser)
-    res.json({ ...playlist })
+    res.json( [...playlist] )
   }
 
   delete = async (req: Request, res: Response) => {

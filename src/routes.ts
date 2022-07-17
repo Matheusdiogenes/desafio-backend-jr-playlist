@@ -20,8 +20,8 @@ router.post('/login', loginController.login)
 router.post('/user', userController.create)
 
 router.get('/user', authMiddleware.ADMIN, userController.findAll)
-router.put('/user/:id', authMiddleware.ADMIN, userController.update)
 router.delete('/user/:id', authMiddleware.ADMIN, userController.delete)
+router.put('/user/:id', authMiddleware.ADMIN, userController.update)
 
 router.post('/playlist', authMiddleware.USER, playlistController.create)
 router.get('/playlist', authMiddleware.USER, playlistController.findAll)
