@@ -5,6 +5,7 @@ Essa API Rest é uma implementação para o usuário criar playlist de músicas.
 O Sistema tem dois tipos de usuário: USER e ADMIN
 
 ADMIN: Responsável por fazer o controle de usuários. Ele não poderá acessar as funcionalidades destinadas ao usuário do tipo USER.
+
 USER: Responsável por criar suas playlist. Ele não poderá acessar as funcionalidades destinadas ao usuário do tipo ADMIN.
 
 > A descrição do desafio proposto pela empresa X está no arquivo `Desafio.md`
