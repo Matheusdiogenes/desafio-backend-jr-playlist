@@ -73,4 +73,5 @@ Ao fazer o cadastro no sistema, o usuário é classificado como usuário do tipo
 #### Contato
 
 Email: matheusdiogenes98gmail.com
+
 Linkedin: linkedin.com/in/matheusdiogenes/
