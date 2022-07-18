@@ -5,12 +5,14 @@ export class UserController {
   constructor(private userRepo: IUserRepo) { }
   create = async (req: Request, res: Response) => {
     const user = await this.userRepo.saveUser(req.body)
+    Reflect.deleteProperty(user, 'password')
     res.status(200).json({ ...user })
   }
 
   findAll = async (req: Request, res: Response) => {
-    const user = await this.userRepo.findAllUser()
-    res.status(200).json({ ...user })
+    const user = await this.userRepo.findAllUser()    
+    const users = user.map(u => Reflect.deleteProperty(u, 'password'))
+    res.status(200).json({ ...users })
   }
 
   update = async (req: Request, res: Response) => {
@@ -24,7 +26,4 @@ export class UserController {
     const update = await this.userRepo.deleteUser(id)
     res.status(200).json(update)
   }
-
-
-
 }

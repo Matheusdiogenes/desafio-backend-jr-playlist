@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { IUserRepo } from "../repositories/IUserRepo"
-import { hash } from 'bcrypt'
 import { User } from '../entities/User'
+import { HashPassword } from '../helpers/HashPassword'
 
 export class UserService implements IUserRepo {
   private prisma = new PrismaClient()
@@ -25,7 +25,8 @@ export class UserService implements IUserRepo {
   }
 
   async updateUser(idUser: number, user: User): Promise<boolean> {
-    if(user.password) user.password = await hash(user.password.toString(), 10)
+    const hash = await HashPassword.hash(user.password)
+    if(user.password) user.password = hash
     await this.prisma.user.update({
       where: {
         id: idUser
@@ -43,11 +44,12 @@ export class UserService implements IUserRepo {
   }
 
   async saveUser(userData: any): Promise<User> {
+    const hash = await HashPassword.hash(userData.password)
     const user = await this.prisma.user.create({
       data: {
         name: userData.name,
         email: userData.email,
-        password: await hash(userData.password.toString(), 10)
+        password: hash
       }
     })
     return user

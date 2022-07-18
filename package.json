@@ -12,7 +12,7 @@
     "prisma": "npx prisma migrate dev",
     "prisma:reset": "npx prisma migrate reset --force",
     "start": "npm run db:dev:up && npx prisma migrate dev",
-    "test": "jest"
+    "test": "npm run prisma:reset && jest"
   },
   "keywords": [],
   "author": "",
