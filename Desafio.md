@@ -56,3 +56,10 @@ Utilize o banco de dados que tiver maior facilidade e que atenda as necessidades
     musics: string[];
     user_id: number
   ```
+
+# Observações
+> Dica: Utililzar VS Code.
+- Verificar o uso de Verbos HTTP para construção da API
+- **Opcional**: Utilização de Swagger ou semelhante para documentação da API
+- **Opcional**: Separar a camada de comunicação com o banco da camada da API
+- **Opcional**: Rodar o backend e o banco de dados em um container.
